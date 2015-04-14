@@ -1,0 +1,52 @@
+{% load humanize %}
+
+<!DOCTYPE html>
+<head>
+
+        <script type="../../static/art/bootstrap.js"></script>
+        <link rel="stylesheet" type="text/css" href="../../static/art/style.css">
+        <link rel="stylesheet" type="text/css" href="../../static/art/bootstrap.css">
+</head>
+<body>
+        <div><h1>Pittman's Art Gallery</h1></div>
+        <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                      </button>
+                      <a class="navbar-brand" href="/home">Home</a>
+                      <a class="navbar-brand" href="/store">Store</a>
+                      <a class="navbar-brand" href="/contact">Contact</a>
+                    </div>
+        </nav>
+</body>
+<div>
+
+  <div class="margin_left">
+    <img src="../../static/art/images/{{art.image}}" />
+  </div>
+  <div class="margin_left" id="text">
+      <ul class="storeList">
+        <li>Item: {{ art.item_name }}</li>
+        <li>Type: {{ art.item_type }}</li>
+        <li>${{ art.price |floatformat:2|intcomma }}</li>
+        <li>Qty: {{ art.quantity }}</li>
+      </ul> 
+ <div>
+ <div class="margin_left">
+    {% if art.quantity == "0" %}
+      <h3 class="out_of_stock">Sorry! We are all out of this product.</h3>
+      
+    {% else %}
+      <a class="btn btn-primary" href"/checkout/{{ art.id }}/"> Purchase</a>
+    {% endif%}
+    
+ </div>
+
+</div>
+</html>

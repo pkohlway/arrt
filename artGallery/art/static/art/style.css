@@ -1,0 +1,33 @@
+hr {
+	size: 12px;
+	color: black;
+}
+
+.storeList {
+	list-style-type: none;
+}
+
+.artLink {
+	text-decoration: none;
+
+}
+
+.store_img {
+	padding: 1em;
+	height: 8em;
+	width: 9.5em;
+}
+
+.left_div {
+	float: left;
+	width: 10em;
+	height: 7em;
+}
+
+.out_of_stock {
+	color: red;
+}
+
+.margin_left {
+	margin-left: 2em;
+}
