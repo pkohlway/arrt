@@ -28,3 +28,13 @@ def detail(request, item_id):
 	template = loader.get_template('art/detail.html')
 	context = RequestContext(request, {'art' : art})
 	return HttpResponse(template.render(context))
+
+def checkout(request, item_id):
+	art = get_object_or_404(art_item, pk=item_id)
+	template = loader.get_template('art/checkout.html')
+	context = RequestContext(request, {'art' : art})
+	return HttpResponse(template.render(context))
+def order(request, item_id):
+	item = get_object_or_404(art_item, pk=item_id)
+
+	item.quantity -= 1
