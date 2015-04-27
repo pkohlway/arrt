@@ -9,8 +9,9 @@
 </head>
 
 {%include "art/navigation.html" %}
-<h1> Checkout </h1>
-<form class="margin_left" >
+<h1> Checkout - {{art.item_name}} </h1>
+<form class="margin_left" action="{% url 'order' art.id %}" method="post">
+  {% csrf_token %}
   <div class="form-group">
     <label for="firstname"> First Name</label>
     <input type="fname" class="form-control" id="fname" placeholder="Enter First Name">
@@ -21,7 +22,7 @@
   </div>
   <div class="form-group">
     <label for="email">Email address</label>
-    <input type="email" class="form-control" id="email" placeholder="Enter email">
+    <input type="email" class="form-control" id="email" placeholder="Enter Email">
   </div>
   <div class="form-group">
     <label for="cardnumber"> Credit Card Number</label>
@@ -31,11 +32,7 @@
     <label for="crcCode"> CVC code</label>
     <input type="cvc" class="form-control" id="cvc" placeholder="Enter Valid CVC code">
   </div>
-  <div class="checkbox">
-    <label>
-      <input type="checkbox"> Check me out
-    </label>
-  </div>
+
   <button type="submit" class="btn btn-default">Submit</button>
 </form>
 </html>

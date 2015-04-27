@@ -7,5 +7,5 @@ urlpatterns = patterns('art.views',
     url(r'^contact/$', 'contact', name='contact'),
     url(r'^detail/(?P<item_id>[0-9]+)/$', "detail", name='detail'),
     url(r'^checkout/(?P<item_id>[0-9]+)/$', "checkout", name='checkout'),
-    url(r'^(?P<item_id>[0-9]+)/$', "order", name="order"),
+    url(r'^(?P<item_id>[0-9]+)/order/$', "order", name="order"),
 )

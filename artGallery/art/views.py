@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
+from django.shortcuts import HttpResponseRedirect
+from django.core.urlresolvers import reverse
 from django.template import RequestContext, loader
 from art.models import art_item
 # Create your views here.
@@ -36,4 +38,11 @@ def checkout(request, item_id):
 	return HttpResponse(template.render(context))
 def order(request, item_id):
 	item = get_object_or_404(art_item, pk=item_id)
-	item.quantity -= 1
+	qty = int(item.quantity)
+	qty -= 1
+	item.quantity = qty
+	item.save()
+
+	template = loader.get_template('art/order.html')
+	context = RequestContext(request, {})
+	return HttpResponse(template.render(context))
